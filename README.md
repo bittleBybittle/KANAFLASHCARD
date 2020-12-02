@@ -1,2 +1,2 @@
 # KANAFLASHCARD
-P5 sketch Japanese baisc Kana Flashcard
+P5 sketch Japanese basic Kana Flashcard
