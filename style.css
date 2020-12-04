@@ -1,7 +1,18 @@
 html, body {
+  
+background-color:#0f2259ff;
   margin: 0;
   padding: 0;
 }
+
+h1{ 
+  color: white;
+}
+
+h2{  
+  color: white;
+}
+
 canvas {
   display: block;
 }

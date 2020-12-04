@@ -1,3 +1,4 @@
+
 let romanji;
 let table;
 let value = 0;
@@ -8,12 +9,23 @@ let katakana;
 let hiragana;
 let kx;
 let ky;
+let c1, c2;
 let checkbox;
 
 function preload() {
   romanji = loadTable("romanji.csv", "csv");
   katakana = loadImage('KATAKANA-TABLE.png');
   hiragana = loadImage('HIRAGANA-TABLE.png');
+}
+
+//https://p5js.org/examples/color-linear-gradient.html
+function setGradient(x, y, w, h, c1, c2) {
+  for (var i = 0; i <= height; i++) {
+    var inter = map(i, y, y + h, 0, 1);
+    var c = lerpColor(c1, c2, inter);
+    stroke(c);
+    line(x, i, x + width, i);
+  }
 }
 
 function settarget(){
@@ -34,12 +46,22 @@ function showkana(x,y){
 }
 
 function setup() {
-  createCanvas(400, 400);
+  let mydiv; 
+
+  //mydiv = createDiv(createCanvas(400, 400));
+  //mydiv.text_align = (CENTER);
+
+ createCanvas(400, 400);
+  canvas.position = (200,100); //= window.innerWidth * 0.8;
+  // = window.innerHeight * 0.8;
+  c1 = color(0, 102, 153);
+  c2 = color(128, 102, 153);
   radio = createRadio();
   radio.option('Hiragana');
   radio.option('Katakana');
   radio.style('width', '60px');
   radio.selected('Hiragana');
+  createP('');
   checkbox = createCheckbox('HINT',false);
   textAlign(CENTER);  
   //print(romanji.getRowCount() + ' total rows in table');
@@ -69,6 +91,7 @@ function hittest() {
 
 function draw() {
   background(220);
+  setGradient(0, 150, 540, 80, c1, c2);
   showkana(kx,ky);
   if (checkbox.checked()){
       //show target
