@@ -1,4 +1,3 @@
-
 let romanji;
 let table;
 let value = 0;
@@ -11,6 +10,8 @@ let kx;
 let ky;
 let c1, c2;
 let checkbox;
+//*
+let blossoms = [];
 
 function preload() {
   romanji = loadTable("romanji.csv", "csv");
@@ -25,6 +26,17 @@ function setGradient(x, y, w, h, c1, c2) {
     var c = lerpColor(c1, c2, inter);
     stroke(c);
     line(x, i, x + width, i);
+  }
+}
+
+function createblossom() {
+
+  for (let i = 0; i < 10; i++) {
+    mysakura = new sakura(0, 0);
+    mysakura.x = random(400);
+    mysakura.y = random(400);
+    //blossoms[i] = mysakura;
+    blossoms.push(mysakura);
   }
 }
 
@@ -52,6 +64,12 @@ function setup() {
   //mydiv.text_align = (CENTER);
 
  createCanvas(400, 400);
+  
+  angleMode(DEGREES);
+  createblossom();
+  mysakura = new sakura(0, 0);
+
+  
   canvas.position = (200,100); //= window.innerWidth * 0.8;
   // = window.innerHeight * 0.8;
   c1 = color(0, 102, 153);
@@ -92,6 +110,12 @@ function hittest() {
 function draw() {
   background(220);
   setGradient(0, 150, 540, 80, c1, c2);
+  
+    for(let i=0; i<10;i++){   
+   mysakura = blossoms[i];
+   mysakura.show();
+  }
+  
   showkana(kx,ky);
   if (checkbox.checked()){
       //show target
@@ -103,7 +127,6 @@ function draw() {
   stroke(128);
   line(width/2-50,350,width/2+50,350);
 }
-
 
 function keyTyped() {
   shot = shot + key;
