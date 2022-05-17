@@ -58,29 +58,32 @@ function showkana(x,y){
 }
 
 function setup() {
-  let mydiv; 
+  //let mydiv; 
 
   //mydiv = createDiv(createCanvas(400, 400));
   //mydiv.text_align = (CENTER);
-
+ canvas.position = (200,100)
  createCanvas(400, 400);
   
   angleMode(DEGREES);
   createblossom();
   mysakura = new sakura(0, 0);
 
-  
-  canvas.position = (200,100); //= window.innerWidth * 0.8;
-  // = window.innerHeight * 0.8;
+
+  //canvas.position = 'center'; //(200,100)
+  //canvas.position = (window.innerWidth * 0.8, window.innerHeight * 0.8);
+
   c1 = color(0, 102, 153);
   c2 = color(128, 102, 153);
   radio = createRadio();
   radio.option('Hiragana');
   radio.option('Katakana');
   radio.style('width', '60px');
+  radio.style('color', 'white');
   radio.selected('Hiragana');
   createP('');
   checkbox = createCheckbox('HINT',false);
+  checkbox.style('color', 'white');
   textAlign(CENTER);  
   //print(romanji.getRowCount() + ' total rows in table');
   //print(romanji.getColumnCount() + ' total columns in table');
@@ -111,9 +114,9 @@ function draw() {
   background(220);
   setGradient(0, 150, 540, 80, c1, c2);
   
-    for(let i=0; i<10;i++){   
-   mysakura = blossoms[i];
-   mysakura.show();
+  for(let i=0; i<10;i++){   
+    mysakura = blossoms[i];
+    mysakura.show();
   }
   
   showkana(kx,ky);
